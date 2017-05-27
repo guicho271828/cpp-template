@@ -1,11 +1,11 @@
 
 BIN = out
 
-SRC = $(wildcard src/*.cc)
-OBJS = $(SRC:%.cc=%.o)
-DEPS = $(SRC:%.cc=%.d)
+SRC = $(wildcard src/*.cpp)
+OBJS = $(SRC:%.cpp=%.o)
+DEPS = $(SRC:%.cpp=%.d)
 
-CPPFLAGS += -MMD -MP
+CPPFLAGS += -MMD -MP -Ilib/cereal/include -Ilib/backward-cpp
 CXXFLAGS += -std=c++17 -lstdc++fs
 
 $(BIN): $(OBJS)

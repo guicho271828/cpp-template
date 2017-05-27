@@ -2,8 +2,10 @@
 #include <iostream>
 #include <unordered_map>
 #include <deque>
+#include "cereal/cereal.hpp"
 
-#include "printer.h"
+#include "printer.hpp"
+#include "hash.hpp"
 
 // not in large code base!
 using namespace std;

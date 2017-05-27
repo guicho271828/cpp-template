@@ -2,6 +2,6 @@
 #*
 *.fifo
 *.log
-be/myls
 *.o
 *.d
+out
