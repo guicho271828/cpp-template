@@ -1,6 +1,6 @@
-[submodule "cereal"]
-	path = cereal
+[submodule "lib/cereal"]
+	path = lib/cereal
 	url = https://github.com/USCiLab/cereal.git
-[submodule "backward-cpp"]
-	path = backward-cpp
+[submodule "lib/backward-cpp"]
+	path = lib/backward-cpp
 	url = https://github.com/bombela/backward-cpp.git
