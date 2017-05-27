@@ -20,3 +20,6 @@ test: $(BIN)
 	./test.sh
 
 -include $(DEPS)
+
+clean:
+	rm $(OBJS) $(DEPS) $(BIN)
