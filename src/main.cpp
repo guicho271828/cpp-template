@@ -2,8 +2,9 @@
 #include <iostream>
 #include <unordered_map>
 #include <deque>
-#include "cereal/cereal.hpp"
+#include <sstream>
 
+#include "cereal/cereal.hpp"
 #include "printer.hpp"
 #include "hash.hpp"
 
@@ -33,13 +34,29 @@ deque<string> parse_options(int argc, char* argv[]){
         if (arg[0] == '-'){
             auto end = arg.find('=');
             string value = arg.substr(end+1);
-            if (arg[1] == '-'){
-                arg = alias_table[arg.substr(2,end)];
+            string key =
+                arg.substr((arg[1] == '-') ? 2:1,
+                           end-1);
+            
+            auto it = alias_table.find(key);
+            if (it != alias_table.end()){
+                key = it->second;
             }
+            
             if (end == string::npos){
-                bool_options[arg] = true;
+                if (bool_options.find(key) == bool_options.end()){
+                    stringstream ss;
+                    ss << key << " is an unknown boolean option";
+                    throw domain_error(ss.str());
+                }
+                bool_options[key] = true;
             }else{
-                string_options[arg] = value;
+                if (string_options.find(key) == string_options.end()){
+                    stringstream ss;
+                    ss << key << " is an unknown key-value option";
+                    throw domain_error(ss.str());
+                }
+                string_options[key] = value;
             }
         }else{
             break;
