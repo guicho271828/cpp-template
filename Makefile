@@ -1,5 +1,5 @@
 
-BIN = myls
+BIN = out
 
 SRC = $(wildcard src/*.cc)
 OBJS = $(SRC:%.cc=%.o)
@@ -16,7 +16,7 @@ $(BIN): $(OBJS)
 auto:
 	./make-periodically.sh test
 
-test: myls
+test: $(BIN)
 	./test.sh
 
 -include $(DEPS)
